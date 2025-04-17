@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, Navigate, useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 
 function App() {
@@ -28,7 +28,8 @@ const logout = () =>{
 
   return (
     <div className="app">
-      <NavBar logout={logout} />
+      {/* Add conditional rendering so users have to be logged in to see pages on the site */}
+     {isLoggedIn ? <NavBar logout={logout} />: <Navigate to="/login"/>}
       <Outlet context={login} />
     </div>
   );
